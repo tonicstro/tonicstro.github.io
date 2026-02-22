@@ -1,58 +1,250 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tu Nombre | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Tu Nombre</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fuente moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Cursor custom -->
+  <div class="cursor"></div>
 
-  <nav>
-    <div class="logo">TuNombre</div>
-    <ul>
-      <li><a href="#sobre">Sobre mí</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo">Tu<span>Logo</span></div>
 
-  <header>
-    <h1>Desarrollador de Aplicaciones</h1>
-    <p>Construyendo soluciones digitales eficientes y escalables.</p>
-    <a href="#proyectos" class="btn">Ver proyectos</a>
+      <nav class="nav">
+        <ul>
+          <li><a href="#home" class="nav-link active">Inicio</a></li>
+          <li><a href="#about" class="nav-link">Sobre mí</a></li>
+          <li><a href="#projects" class="nav-link">Proyectos</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <section id="sobre">
-    <h2>Sobre mí</h2>
-    <p>
-      Desarrollador con experiencia creando aplicaciones desde cero,
-      enfocado en arquitectura limpia, rendimiento y soluciones reales.
-    </p>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="container hero-inner">
+        <div class="hero-text reveal">
+          <p class="hero-kicker">Hola, soy</p>
+          <h1>Tu Nombre</h1>
+          <h2>Desarrollador Frontend / OT Cybersecurity</h2>
+          <p class="hero-desc">
+            Creo experiencias web limpias, rápidas y seguras, combinando desarrollo frontend
+            con enfoque en ciberseguridad industrial.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary">Ver proyectos</a>
+            <a href="#contact" class="btn ghost">Contactar</a>
+          </div>
+        </div>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
+        <div class="hero-visual reveal delay-1">
+          <div class="floating-card">
+            <div class="glow"></div>
+            <div class="avatar-circle">
+              <span>AC</span>
+            </div>
+            <div class="floating-info">
+              <p>+X años en automatización</p>
+              <p>Modbus · Profinet · OT Sec</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>AppChecklist</h3>
-      <p>Aplicación industrial desarrollada desde cero. Arquitectura modular, control de procesos y optimización operativa.</p>
+    <!-- SOBRE MI -->
+    <section id="about" class="section">
+      <div class="container section-inner">
+        <div class="section-header reveal">
+          <h2>Sobre mí</h2>
+          <p>
+            Ingeniero de automatización especializado en seguridad OT, creando soluciones robustas
+            y mantenibles para entornos industriales.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <h3>Qué hago</h3>
+            <p>
+              Desarrollo aplicaciones web y scripts en Python para monitorización, pruebas de
+              protocolos industriales y automatización de tareas.
+            </p>
+          </div>
+          <div class="about-card reveal delay-1">
+            <h3>Cómo trabajo</h3>
+            <p>
+              Diseño limpio, código legible, enfoque en rendimiento y seguridad desde el inicio
+              del proyecto.
+            </p>
+          </div>
+          <div class="about-card reveal delay-2">
+            <h3>En qué creo</h3>
+            <p>
+              Documentación clara, testing y feedback rápido para entregar soluciones estables
+              que se puedan escalar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects" class="section alt">
+      <div class="container section-inner">
+        <div class="section-header reveal">
+          <h2>Proyectos destacados</h2>
+          <p>Algunos trabajos recientes centrados en automatización, redes industriales y web.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Proyecto 1 -->
+          <article class="project-card reveal">
+            <div class="project-tag">Web · Frontend</div>
+            <h3>Portfolio animado</h3>
+            <p>
+              Landing responsive con animaciones suaves, modo oscuro y microinteracciones.
+            </p>
+            <ul class="project-tech">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" target="_blank">Demo</a>
+              <a href="#" target="_blank">Código</a>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project-card reveal delay-1">
+            <div class="project-tag">OT · Python</div>
+            <h3>Sniffer Modbus TCP</h3>
+            <p>
+              Herramienta en Python para capturar, analizar y loguear tráfico Modbus TCP
+              en entornos industriales.
+            </p>
+            <ul class="project-tech">
+              <li>Python</li><li>Scapy</li><li>Wireshark</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" target="_blank">Demo</a>
+              <a href="#" target="_blank">Código</a>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project-card reveal delay-2">
+            <div class="project-tag">PLC · SCADA</div>
+            <h3>Celda de producción segura</h3>
+            <p>
+              Diseño de red segmentada con políticas de seguridad y monitoreo para celda
+              basada en S7‑1200.
+            </p>
+            <ul class="project-tech">
+              <li>TIA Portal</li><li>Profinet</li><li>OT Sec</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" target="_blank">Doc</a>
+              <a href="#" target="_blank">Repositorio</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container section-inner">
+        <div class="section-header reveal">
+          <h2>Skills</h2>
+          <p>Stack principal que utilizo en proyectos de automatización y desarrollo.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-column reveal">
+            <h3>Desarrollo</h3>
+            <ul>
+              <li>HTML · CSS · JavaScript</li>
+              <li>Responsive Design</li>
+              <li>Python (scripts y APIs)</li>
+            </ul>
+          </div>
+          <div class="skill-column reveal delay-1">
+            <h3>Industrial</h3>
+            <ul>
+              <li>Siemens TIA Portal (S7‑1200)</li>
+              <li>Modbus TCP · Profinet</li>
+              <li>SCADA y HMI</li>
+            </ul>
+          </div>
+          <div class="skill-column reveal delay-2">
+            <h3>Ciberseguridad OT</h3>
+            <ul>
+              <li>Seguridad de redes industriales</li>
+              <li>Análisis de tráfico (Wireshark)</li>
+              <li>Evaluación de riesgos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="section alt">
+      <div class="container section-inner contact-inner">
+        <div class="section-header reveal">
+          <h2>Contacto</h2>
+          <p>¿Tienes un proyecto o idea? Hablemos.</p>
+        </div>
+
+        <form class="contact-form reveal" autocomplete="off">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="tucorreo@mail.com" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" rows="4" placeholder="Cuéntame qué necesitas" required></textarea>
+          </div>
+          <button type="submit" class="btn primary full">Enviar mensaje</button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Tu Nombre · Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">LinkedIn</a>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Proyecto 2</h3>
-      <p>Descripción breve del proyecto y el problema que resuelve.</p>
-    </div>
-
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: tuemail@email.com</p>
-  </section>
-
-  <footer>
-    <p>© 2026 Tu Nombre</p>
   </footer>
 
   <script src="script.js"></script>
