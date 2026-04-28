@@ -20,6 +20,16 @@ const dictionary = {
     healthTrace: "Trazabilidad",
     healthRisk: "Riesgo medio",
     healthDeploy: "Listo para piloto",
+    areaOps: "Operaciones",
+    areaOpsText: "Procesos, incidencias y tareas repetitivas.",
+    areaSales: "Ventas",
+    areaSalesText: "Propuestas, CRM y seguimiento comercial.",
+    areaSupport: "Soporte",
+    areaSupportText: "Tickets, respuestas y priorización.",
+    areaBackoffice: "Backoffice",
+    areaBackofficeText: "Documentos, validaciones y reporting.",
+    areaManagement: "Dirección",
+    areaManagementText: "Indicadores, riesgos y decisiones.",
     servicesEyebrow: "Servicios",
     servicesTitle: "Del mapa de oportunidades al sistema funcionando.",
     servicesLead: "Trabajamos donde la IA puede reducir fricción real: búsqueda de conocimiento, tareas repetitivas, análisis, clasificación y soporte a decisiones.",
@@ -82,9 +92,14 @@ const dictionary = {
     formMessage: "Contexto",
     formMessagePlaceholder: "Cuéntame brevemente qué proceso te gustaría automatizar o revisar.",
     formPrivacy: "Al enviar, se abrirá tu correo con el mensaje preparado. Tú decides si lo mandas.",
+    formObjectiveRequired: "Selecciona qué quieres mejorar para preparar el diagnóstico.",
     formStatusReady: "Mensaje preparado. Se abrirá tu aplicación de correo.",
     footerBrand: "Cortex Norte",
-    footerText: "IA aplicada a operaciones, ventas y soporte."
+    footerText: "IA aplicada a operaciones, ventas y soporte.",
+    footerLocation: "España · Trabajo remoto",
+    footerPrivacy: "Privacidad",
+    footerLegal: "Aviso legal",
+    footerCookies: "Cookies"
   },
   en: {
     brand: "Cortex Norte",
@@ -107,6 +122,16 @@ const dictionary = {
     healthTrace: "Traceability",
     healthRisk: "Medium risk",
     healthDeploy: "Pilot ready",
+    areaOps: "Operations",
+    areaOpsText: "Processes, incidents and repetitive tasks.",
+    areaSales: "Sales",
+    areaSalesText: "Proposals, CRM and commercial follow-up.",
+    areaSupport: "Support",
+    areaSupportText: "Tickets, replies and prioritization.",
+    areaBackoffice: "Backoffice",
+    areaBackofficeText: "Documents, validations and reporting.",
+    areaManagement: "Leadership",
+    areaManagementText: "Indicators, risks and decisions.",
     servicesEyebrow: "Services",
     servicesTitle: "From opportunity map to working system.",
     servicesLead: "We work where AI can reduce real friction: knowledge search, repetitive tasks, analysis, classification and decision support.",
@@ -169,15 +194,22 @@ const dictionary = {
     formMessage: "Context",
     formMessagePlaceholder: "Briefly tell me which process you would like to automate or review.",
     formPrivacy: "When you submit, your email app will open with the message prepared. You decide whether to send it.",
+    formObjectiveRequired: "Select what you want to improve so we can prepare the diagnostic.",
     formStatusReady: "Message prepared. Your email app will open.",
     footerBrand: "Cortex Norte",
-    footerText: "AI applied to operations, sales and support."
+    footerText: "AI applied to operations, sales and support.",
+    footerLocation: "Spain · Remote work",
+    footerPrivacy: "Privacy",
+    footerLegal: "Legal notice",
+    footerCookies: "Cookies"
   }
 };
 
 const buttons = document.querySelectorAll(".lang-btn");
 const elements = document.querySelectorAll("[data-i18n]");
 const placeholderElements = document.querySelectorAll("[data-i18n-placeholder]");
+const navLinks = document.querySelectorAll(".main-nav a");
+const enhancedSelects = [];
 let currentLanguage = "es";
 
 function setLanguage(lang) {
@@ -198,18 +230,146 @@ function setLanguage(lang) {
   buttons.forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === lang);
   });
+  syncEnhancedSelectLabels();
 }
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
+const navSections = Array.from(navLinks)
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+if (navSections.length) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+      });
+    });
+  }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+  navSections.forEach((section) => navObserver.observe(section));
+}
+
 const diagnosticForm = document.querySelector("#diagnosticForm");
 const formStatus = document.querySelector("#formStatus");
+
+function closeEnhancedSelect(root) {
+  root.classList.remove("open");
+  root.querySelector(".select-trigger")?.setAttribute("aria-expanded", "false");
+}
+
+function syncEnhancedSelectLabels() {
+  enhancedSelects.forEach(({ select, root, trigger }) => {
+    root.querySelectorAll("[data-i18n]").forEach((optionButton) => {
+      const key = optionButton.dataset.i18n;
+      if (dictionary[currentLanguage][key]) {
+        optionButton.textContent = dictionary[currentLanguage][key];
+      }
+    });
+
+    const selectedOption = select.selectedOptions[0];
+    const placeholderOption = select.options[0];
+    const labelSource = select.value ? selectedOption : placeholderOption;
+    const key = labelSource?.dataset.i18n;
+    trigger.textContent = key && dictionary[currentLanguage][key]
+      ? dictionary[currentLanguage][key]
+      : labelSource?.textContent || "";
+  });
+}
+
+function openObjectiveSelect(select) {
+  const enhanced = enhancedSelects.find((item) => item.select === select);
+  if (!enhanced) return;
+  enhanced.root.classList.add("open");
+  enhanced.trigger.setAttribute("aria-expanded", "true");
+  enhanced.trigger.focus();
+}
+
+document.querySelectorAll(".diagnostic-form select").forEach((select) => {
+  const root = document.createElement("div");
+  const trigger = document.createElement("button");
+  const menu = document.createElement("div");
+  const placeholder = select.options[0]?.textContent || "";
+
+  select.required = false;
+  select.classList.add("select-native-hidden");
+
+  root.className = "select-enhanced";
+  trigger.className = "select-trigger";
+  trigger.type = "button";
+  trigger.textContent = select.value ? select.selectedOptions[0].textContent : placeholder;
+  trigger.setAttribute("aria-haspopup", "listbox");
+  trigger.setAttribute("aria-expanded", "false");
+
+  menu.className = "select-menu";
+  menu.setAttribute("role", "listbox");
+
+  Array.from(select.options).slice(1).forEach((option) => {
+    const optionButton = document.createElement("button");
+    optionButton.type = "button";
+    optionButton.textContent = option.textContent;
+    optionButton.dataset.value = option.value;
+    optionButton.dataset.i18n = option.dataset.i18n || "";
+    optionButton.setAttribute("role", "option");
+    optionButton.setAttribute("aria-selected", option.selected ? "true" : "false");
+
+    optionButton.addEventListener("click", () => {
+      select.value = option.value;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+      root.querySelectorAll(".select-menu button").forEach((button) => {
+        const isSelected = button.dataset.value === select.value;
+        button.classList.toggle("selected", isSelected);
+        button.setAttribute("aria-selected", isSelected ? "true" : "false");
+      });
+      syncEnhancedSelectLabels();
+      closeEnhancedSelect(root);
+      trigger.focus();
+    });
+
+    menu.append(optionButton);
+  });
+
+  trigger.addEventListener("click", () => {
+    const isOpen = root.classList.toggle("open");
+    trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  root.append(trigger, menu);
+  select.insertAdjacentElement("afterend", root);
+  enhancedSelects.push({ select, root, trigger });
+});
+
+document.addEventListener("click", (event) => {
+  enhancedSelects.forEach(({ root }) => {
+    if (!root.contains(event.target)) {
+      closeEnhancedSelect(root);
+    }
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    enhancedSelects.forEach(({ root }) => closeEnhancedSelect(root));
+  }
+});
+
+syncEnhancedSelectLabels();
 
 if (diagnosticForm) {
   diagnosticForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const objectiveSelect = diagnosticForm.querySelector("select[name='objective']");
+
+    if (objectiveSelect && !objectiveSelect.value) {
+      formStatus.textContent = dictionary[currentLanguage].formObjectiveRequired;
+      openObjectiveSelect(objectiveSelect);
+      return;
+    }
+
     const formData = new FormData(diagnosticForm);
     const subject = currentLanguage === "en"
       ? "AI diagnostic request"
