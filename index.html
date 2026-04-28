@@ -1,15 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi porfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self';">
+  <title>Cortex Norte | IA aplicada a operaciones</title>
+  <meta name="description" content="Consultoría IA para crear agentes, automatizaciones y sistemas RAG que entran en producción con seguridad, trazabilidad y retorno medible.">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="motion-on">
+  <div class="motion-field" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Cortex Norte">
+      <span class="brand-mark">AI</span>
+      <span class="brand-name" data-i18n="brand">Cortex Norte</span>
+    </a>
+    <nav class="main-nav" aria-label="Principal">
+      <a href="#servicios" data-i18n="navServices">Servicios</a>
+      <a href="#metodo" data-i18n="navMethod">Método</a>
+      <a href="#casos" data-i18n="navCases">Casos</a>
+      <a href="#seguridad" data-i18n="navSecurity">Seguridad</a>
+    </nav>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Idioma">
+        <button class="lang-btn active" type="button" data-lang="es">ES</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+      <a class="button primary" href="#contacto" data-i18n="navCta">Diagnóstico IA</a>
+    </div>
+  </header>
 
-    <h1>Toni</h1>
-    <p>DAM</p>
+  <main id="inicio">
+    <section class="hero-section">
+      <div class="ambient-chips" aria-hidden="true">
+        <span>RAG</span>
+        <span>Agents</span>
+        <span>ROI</span>
+        <span>Ops</span>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroEyebrow">Sistemas IA para operaciones complejas</p>
+        <h1 data-i18n="heroTitle">IA generativa que entra en producción, no en una demo.</h1>
+        <p class="hero-lead" data-i18n="heroLead">Diseñamos agentes, buscadores RAG y automatizaciones conectadas a tus datos, con trazabilidad, seguridad y métricas de negocio desde el primer sprint.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#contacto" data-i18n="heroPrimary">Diseñar piloto</a>
+          <a class="button secondary" href="#metodo" data-i18n="heroSecondary">Ver método</a>
+        </div>
+        <div class="signal-row" aria-label="Indicadores">
+          <div>
+            <strong>6-8</strong>
+            <span data-i18n="metricWeeks">semanas para un piloto usable</span>
+          </div>
+          <div>
+            <strong>18%</strong>
+            <span data-i18n="metricCost">objetivo inicial de ahorro operativo</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span data-i18n="metricReview">con control humano donde importa</span>
+          </div>
+        </div>
+      </div>
 
-    <script src="script.js"></script>
+      <div class="system-visual" aria-label="Panel de sistema IA">
+        <div class="panel-orbit" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="visual-topbar">
+          <span></span><span></span><span></span>
+          <p>production.agent</p>
+        </div>
+        <div class="pipeline">
+          <div class="node source">
+            <span>01</span>
+          <strong>CRM + ERP</strong>
+            <small data-i18n="visualSource">Datos internos</small>
+          </div>
+          <div class="connector"></div>
+          <div class="node model">
+            <span>02</span>
+            <strong>RAG</strong>
+            <small data-i18n="visualModel">Contexto privado</small>
+          </div>
+          <div class="connector"></div>
+          <div class="node action">
+            <span>03</span>
+            <strong>Agent</strong>
+            <small data-i18n="visualAction">Acciones verificables</small>
+          </div>
+        </div>
+        <pre class="terminal-code">pipeline.status = "ready"
+documents.indexed = 18427
+human_review = true
+roi.target = "coste -18%"
+
+agent.run({
+  source: "CRM + ERP",
+  task: "priorizar incidencias",
+  output: "acciones verificables"
+})</pre>
+        <div class="health-strip">
+          <span><i class="ok"></i><b data-i18n="healthTrace">Trazabilidad</b></span>
+          <span><i class="warn"></i><b data-i18n="healthRisk">Riesgo medio</b></span>
+          <span><i class="ok"></i><b data-i18n="healthDeploy">Listo para piloto</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="logo-band" aria-label="Areas">
+      <span>Operaciones</span>
+      <span>Ventas</span>
+      <span>Soporte</span>
+      <span>Backoffice</span>
+      <span>Direccion</span>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="servicesEyebrow">Servicios</p>
+        <h2 data-i18n="servicesTitle">Del mapa de oportunidades al sistema funcionando.</h2>
+        <p data-i18n="servicesLead">Trabajamos donde la IA puede reducir fricción real: búsqueda de conocimiento, tareas repetitivas, análisis, clasificación y soporte a decisiones.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="card-icon">R</div>
+          <h3 data-i18n="service1Title">RAG privado</h3>
+          <p data-i18n="service1Text">Buscadores y asistentes conectados a documentación interna, con permisos, fuentes y respuestas auditables.</p>
+        </article>
+        <article class="service-card">
+          <div class="card-icon">A</div>
+          <h3 data-i18n="service2Title">Agentes operativos</h3>
+          <p data-i18n="service2Text">Workflows que leen, comparan, priorizan y proponen acciones, escalando excepciones al equipo.</p>
+        </article>
+        <article class="service-card">
+          <div class="card-icon">M</div>
+          <h3 data-i18n="service3Title">Medición y mejora</h3>
+          <p data-i18n="service3Text">Evaluaciones, observabilidad y métricas para saber si el sistema ahorra tiempo, reduce errores o mejora ventas.</p>
+        </article>
+        <article class="service-card">
+          <div class="card-icon">G</div>
+          <h3 data-i18n="service4Title">Gobierno IA</h3>
+          <p data-i18n="service4Text">Políticas de uso, gestión de riesgos, revisión humana y controles antes de pasar de piloto a producción.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="metodo" class="section method-section">
+      <div class="section-heading narrow">
+        <p class="eyebrow" data-i18n="methodEyebrow">Método</p>
+        <h2 data-i18n="methodTitle">Un proceso corto, técnico y orientado a negocio.</h2>
+      </div>
+      <div class="timeline">
+        <article>
+          <span>01</span>
+          <h3 data-i18n="step1Title">Diagnóstico</h3>
+          <p data-i18n="step1Text">Detectamos procesos con volumen, coste, datos disponibles y beneficio claro.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3 data-i18n="step2Title">Diseño</h3>
+          <p data-i18n="step2Text">Definimos arquitectura, integraciones, controles, métricas y criterio de éxito.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3 data-i18n="step3Title">Piloto</h3>
+          <p data-i18n="step3Text">Construimos una primera versión usable con datos reales y usuarios internos.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3 data-i18n="step4Title">Producción</h3>
+          <p data-i18n="step4Text">Medimos adopción, ajustamos calidad y dejamos el sistema documentado.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="casos" class="section split-section">
+      <div>
+        <p class="eyebrow" data-i18n="casesEyebrow">Casos de uso</p>
+        <h2 data-i18n="casesTitle">IA aplicada donde el equipo pierde horas cada semana.</h2>
+        <p data-i18n="casesLead">La tecnología importa, pero el retorno aparece cuando se conecta con procesos concretos y responsables claros.</p>
+      </div>
+      <div class="usecase-list">
+        <article>
+          <strong data-i18n="case1Title">Soporte y tickets</strong>
+          <span data-i18n="case1Text">Clasificación, resumen, respuestas sugeridas y prioridad automatizada.</span>
+        </article>
+        <article>
+          <strong data-i18n="case2Title">Comercial</strong>
+          <span data-i18n="case2Text">Preparación de propuestas, investigación de cuentas y seguimiento CRM.</span>
+        </article>
+        <article>
+          <strong data-i18n="case3Title">Administracion</strong>
+          <span data-i18n="case3Text">Lectura de documentos, validaciones, reporting y conciliaciones simples.</span>
+        </article>
+        <article>
+          <strong data-i18n="case4Title">Conocimiento interno</strong>
+          <span data-i18n="case4Text">Asistentes que responden con fuentes sobre procesos, normativa y documentación.</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="seguridad" class="section security-section">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="securityEyebrow">Seguridad</p>
+        <h2 data-i18n="securityTitle">IA con control antes de escalar.</h2>
+        <p data-i18n="securityLead">Cada sistema se diseña con permisos, trazabilidad, evaluaciones y puntos de revisión humana para evitar automatizaciones opacas.</p>
+      </div>
+      <div class="control-grid">
+        <div><strong data-i18n="control1">Permisos por rol</strong><span>RBAC</span></div>
+        <div><strong data-i18n="control2">Fuentes citadas</strong><span>RAG</span></div>
+        <div><strong data-i18n="control3">Revisión humana</strong><span>HITL</span></div>
+        <div><strong data-i18n="control4">Evaluaciones</strong><span>QA</span></div>
+      </div>
+    </section>
+
+    <section id="contacto" class="diagnostic-section">
+      <div class="diagnostic-copy">
+        <p class="eyebrow" data-i18n="ctaEyebrow">Primer paso</p>
+        <h2 data-i18n="ctaTitle">Descubre qué automatizar antes de invertir en tecnología.</h2>
+        <p data-i18n="ctaLead">En una sesión inicial identificamos 3-5 oportunidades, riesgos y una ruta de piloto con impacto medible.</p>
+        <div class="diagnostic-points">
+          <span><i></i><b data-i18n="diagnosticPoint1">Mapa de oportunidades IA</b></span>
+          <span><i></i><b data-i18n="diagnosticPoint2">Estimación de impacto y esfuerzo</b></span>
+          <span><i></i><b data-i18n="diagnosticPoint3">Recomendación de primer piloto</b></span>
+        </div>
+      </div>
+      <form class="diagnostic-form" id="diagnosticForm">
+        <div class="form-row">
+          <label>
+            <span data-i18n="formName">Nombre</span>
+            <input name="name" type="text" autocomplete="name" maxlength="80" required data-i18n-placeholder="formNamePlaceholder" placeholder="Tu nombre">
+          </label>
+          <label>
+            <span data-i18n="formEmail">Email</span>
+            <input name="email" type="email" autocomplete="email" maxlength="120" required data-i18n-placeholder="formEmailPlaceholder" placeholder="tu@email.com">
+          </label>
+        </div>
+        <label>
+          <span data-i18n="formCompany">Empresa</span>
+          <input name="company" type="text" autocomplete="organization" maxlength="120" data-i18n-placeholder="formCompanyPlaceholder" placeholder="Nombre de la empresa">
+        </label>
+        <label>
+          <span data-i18n="formObjective">Qué quieres mejorar</span>
+          <select name="objective" required>
+            <option value="" data-i18n="formObjectivePlaceholder">Selecciona una opción</option>
+            <option value="Operaciones y procesos" data-i18n="formObjectiveOps">Operaciones y procesos</option>
+            <option value="Ventas y CRM" data-i18n="formObjectiveSales">Ventas y CRM</option>
+            <option value="Soporte al cliente" data-i18n="formObjectiveSupport">Soporte al cliente</option>
+            <option value="Conocimiento interno" data-i18n="formObjectiveKnowledge">Conocimiento interno</option>
+            <option value="No lo tengo claro" data-i18n="formObjectiveUnsure">No lo tengo claro</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="formMessage">Contexto</span>
+          <textarea name="message" rows="5" maxlength="900" data-i18n-placeholder="formMessagePlaceholder" placeholder="Cuéntame brevemente qué proceso te gustaría automatizar o revisar."></textarea>
+        </label>
+        <div class="form-footer">
+          <p data-i18n="formPrivacy">Al enviar, se abrirá tu correo con el mensaje preparado. Tú decides si lo mandas.</p>
+          <button class="button primary" type="submit" data-i18n="ctaButton">Solicitar diagnóstico</button>
+        </div>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="footerBrand">Cortex Norte</span>
+    <span data-i18n="footerText">IA aplicada a operaciones, ventas y soporte.</span>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
