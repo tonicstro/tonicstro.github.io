@@ -21,15 +21,25 @@
       <span class="brand-name" data-i18n="brand">Cortex Norte</span>
     </a>
     <nav class="main-nav" aria-label="Principal">
-      <a href="#servicios" data-i18n="navServices">Servicios</a>
+      <a class="nav-link" href="#servicios" data-i18n="navServices">Servicios</a>
       <a href="#metodo" data-i18n="navMethod">Método</a>
-      <a href="#casos" data-i18n="navCases">Casos</a>
-      <a href="#seguridad" data-i18n="navSecurity">Seguridad</a>
+      <a class="nav-link" href="#casos" data-i18n="navCases">Casos</a>
+      <a class="nav-link" href="#seguridad" data-i18n="navSecurity">Seguridad</a>
     </nav>
     <div class="header-actions">
       <div class="language-switch" aria-label="Idioma">
-        <button class="lang-btn active" type="button" data-lang="es">ES</button>
-        <button class="lang-btn" type="button" data-lang="en">EN</button>
+        <button class="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="lang-current-code">ES</span>
+          <span class="lang-current-name">Español</span>
+        </button>
+        <div class="lang-menu" role="listbox" aria-label="Seleccionar idioma">
+          <button class="lang-btn active" type="button" data-lang="es"><span>ES</span><small>Español</small></button>
+          <button class="lang-btn" type="button" data-lang="en"><span>EN</span><small>English</small></button>
+          <button class="lang-btn" type="button" data-lang="pt"><span>PT</span><small>Português</small></button>
+          <button class="lang-btn" type="button" data-lang="fr"><span>FR</span><small>Français</small></button>
+          <button class="lang-btn" type="button" data-lang="de"><span>DE</span><small>Deutsch</small></button>
+          <button class="lang-btn" type="button" data-lang="it"><span>IT</span><small>Italiano</small></button>
+        </div>
       </div>
       <a class="button primary" href="#contacto" data-i18n="navCta">Diagnóstico IA</a>
     </div>
@@ -113,12 +123,32 @@ agent.run({
       </div>
     </section>
 
-    <section class="logo-band" aria-label="Areas">
-      <span>Operaciones</span>
-      <span>Ventas</span>
-      <span>Soporte</span>
-      <span>Backoffice</span>
-      <span>Direccion</span>
+    <section class="logo-band" aria-label="Áreas de impacto">
+      <article class="area-item">
+        <span>01</span>
+        <strong data-i18n="areaOps">Operaciones</strong>
+        <small data-i18n="areaOpsText">Procesos, incidencias y tareas repetitivas.</small>
+      </article>
+      <article class="area-item">
+        <span>02</span>
+        <strong data-i18n="areaSales">Ventas</strong>
+        <small data-i18n="areaSalesText">Propuestas, CRM y seguimiento comercial.</small>
+      </article>
+      <article class="area-item">
+        <span>03</span>
+        <strong data-i18n="areaSupport">Soporte</strong>
+        <small data-i18n="areaSupportText">Tickets, respuestas y priorización.</small>
+      </article>
+      <article class="area-item">
+        <span>04</span>
+        <strong data-i18n="areaBackoffice">Backoffice</strong>
+        <small data-i18n="areaBackofficeText">Documentos, validaciones y reporting.</small>
+      </article>
+      <article class="area-item">
+        <span>05</span>
+        <strong data-i18n="areaManagement">Dirección</strong>
+        <small data-i18n="areaManagementText">Indicadores, riesgos y decisiones.</small>
+      </article>
     </section>
 
     <section id="servicios" class="section">
@@ -271,8 +301,23 @@ agent.run({
   </main>
 
   <footer class="site-footer">
-    <span data-i18n="footerBrand">Cortex Norte</span>
-    <span data-i18n="footerText">IA aplicada a operaciones, ventas y soporte.</span>
+    <div class="footer-brand">
+      <span class="footer-logo" aria-hidden="true">AI</span>
+      <div>
+        <strong data-i18n="footerBrand">Cortex Norte</strong>
+        <p data-i18n="footerText">IA aplicada a operaciones, ventas y soporte.</p>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <a href="mailto:hola@cortexnorte.ai">hola@cortexnorte.ai</a>
+      <span data-i18n="footerLocation">España · Trabajo remoto</span>
+      <span>© 2026 Cortex Norte</span>
+      <div class="footer-legal" aria-label="Información legal">
+        <span data-i18n="footerPrivacy">Privacidad</span>
+        <span data-i18n="footerLegal">Aviso legal</span>
+        <span data-i18n="footerCookies">Cookies</span>
+      </div>
+    </div>
   </footer>
 
   <script src="app.js"></script>
